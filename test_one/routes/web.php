@@ -38,3 +38,7 @@ Route::namespace('Admin')
         Route::get('/dashboard1', 'DashboardController@index');
         Route::get('/dashboard2', 'DashboardController@index2');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

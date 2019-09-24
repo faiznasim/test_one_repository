@@ -12,6 +12,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+		//DB::table('role_user')->truncate();
+		//DB::table('role_user')->delete();
         Role::truncate();
 
         Role::create([

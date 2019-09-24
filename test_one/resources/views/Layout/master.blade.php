@@ -33,33 +33,73 @@
 							<nav class="main_nav">
 								<ul>
 									<li class="hassubs active">
-										<a href="index.html">Home</a>
+										<a href="/">Home</a>
 										<ul>
-											<li><a href="categories.html">Categories</a></li>
-											<li><a href="product.html">Product</a></li>
-											<li><a href="cart.html">Cart</a></li>
-											<li><a href="checkout.html">Check out</a></li>
-											<li><a href="contact.html">Contact</a></li>
+											<li><a href="/categories">Categories</a></li>
+											<li><a href="/products">Product</a></li>
+											<li><a href="cart">Cart</a></li>
+											<li><a href="/checkout">Check out</a></li>
+											<li><a href="/contact">Contact</a></li>
 										</ul>
 									</li>
 									<li class="hassubs">
-										<a href="categories.html">Categories</a>
+										<a href="/categories">Categories</a>
 										<ul>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
-											<li><a href="categories.html">Category</a></li>
+											<li><a href="/categories">Category</a></li>
+											<li><a href="/categories">Category</a></li>
+											<li><a href="/categories">Category</a></li>
+											<li><a href="/categories">Category</a></li>
+											<li><a href="/categories">Category</a></li>
 										</ul>
 									</li>
 									<li><a href="#">Accessories</a></li>
 									<li><a href="#">Offers</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="/contact">Contact</a></li>
+
+								<!--	<ul class="navbar-nav ml-auto">  
+											Authentication Links
+													<li class="nav-item">
+														<a class="nav-link" href="/login">Login</a>
+													</li>
+
+													<li class="nav-item">
+														<a class="nav-link" href="/register">Register</a>
+													</li>
+                                    	</ul> -->
+									@guest
+										<li class="nav-item">
+											<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+										</li>
+										@if (Route::has('register'))
+											<li class="nav-item">
+												<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+											</li>
+										@endif
+										@else
+											<li class="nav-item dropdown">
+												<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+													{{ Auth::user()->name }} <span class="caret"></span>
+												</a>
+
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+													<a class="dropdown-item" href="{{ route('logout') }}"
+														onclick="event.preventDefault();
+																		document.getElementById('logout-form').submit();">
+														{{ __('Logout') }}
+													</a>
+
+													<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+														@csrf
+													</form>
+												</div>
+											</li>
+									@endguest
+
 								</ul>
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="cart.html">
+									<a href="http://localhost:8000/cart">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>

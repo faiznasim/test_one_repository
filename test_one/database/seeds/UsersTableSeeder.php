@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::truncate();
+	    //DB::table('users')->delete();
 
         $adminRole = Role::where('name', 'admin')->first();
         $customerRole = Role::where('name', 'customer')->first();
@@ -23,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@devskill.com',
             'password' => bcrypt('123456789'),
             'mobile' => '01234567891',
-            'shipping address' => 'DevSkill, Dhaka',
+            //'shipping address' => 'DevSkill, Dhaka',
         ]);
 
         $customerUser = User::create([
@@ -31,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'faiznasim.aust@gmail.com',
             'password' => bcrypt('12345678'),
             'mobile' => '01711217500',
-            'shipping address' => 'Khulna',
+            ///'shipping address' => 'Khulna',
         ]);
 
         $adminUser->roles()->attach($adminRole);
