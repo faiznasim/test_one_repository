@@ -34,9 +34,9 @@ Route::get('/contact', 'ContactController@index');
 Route::namespace('Admin')
     ->prefix('admin')
     ->group(function(){
-        Route::get('/starter', 'DashboardController@starter');
-        Route::get('/dashboard1', 'DashboardController@index');
-        Route::get('/dashboard2', 'DashboardController@index2');
+        Route::get('/starter', 'DashboardController@starter')->middleware(['auth', 'auth.admin']);
+        Route::get('/dashboard1', 'DashboardController@index')->middleware(['auth', 'auth.admin']);
+        Route::get('/dashboard2', 'DashboardController@index2')->middleware(['auth', 'auth.admin']);
 });
 
 Auth::routes();
